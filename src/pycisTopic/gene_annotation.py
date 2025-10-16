@@ -167,7 +167,7 @@ def get_tss_annotation_from_ensembl(
             "transcript_biotype",
         ],
         filters={"transcript_biotype": transcript_type} if transcript_type else None,
-    )
+    ).astype({"Chromosome/scaffold name": str, "Gene name": str})
 
     ensembl_tss_annotation_bed_df_pl = pl.from_pandas(ensembl_tss_annotation).select(
         [
